@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Now Showing Movies</h1>
+
+{% for movie in movies %}
+
+<div style="border:1px solid black;
+padding:20px;
+margin-bottom:20px;">
+
+    <img src="{{ movie.movie_image }}"
+         width="200">
+
+    <h2>{{ movie.title }}</h2>
+
+    <p>{{ movie.description }}</p>
+
+    <p>Price: Rs {{ movie.ticket_price }}</p>
+
+    <p>Seats: {{ movie.available_seats }}</p>
+
+    <p>Release: {{ movie.release_date }}</p>
+
+    <a href="{% url 'book_ticket' movie.id %}">
+        <button>
+            Book Ticket
+        </button>
+    </a>
+
+</div>
+
+{% empty %}
+
+<p>No movies found</p>
+
+{% endfor %}
+
+{% endblock %}
