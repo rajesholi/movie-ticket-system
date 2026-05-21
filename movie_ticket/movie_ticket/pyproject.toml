@@ -1,0 +1,6 @@
+[project]
+name = "movie-ticket-system"
+version = "0.1.0"
+dependencies = []
+
+[tool.vercel]
