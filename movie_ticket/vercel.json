@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "movie_ticket/wsgi.py",
-      "use": "@vercel/python"
+  "functions": {
+    "movie_ticket/wsgi.py": {
+      "runtime": "python3.11"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
