@@ -5,6 +5,14 @@ from django.db import transaction
 from .models import Movie, Booking, Seat
 
 
+try:
+    import pyautogui
+    import pyttsx3
+except ImportError:
+    pyautogui = None
+    pyttsx3 = None
+ 
+
 # -------------------------
 # AUTO SEATS
 # -------------------------
