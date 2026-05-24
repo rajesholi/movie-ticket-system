@@ -37,7 +37,11 @@ class Booking(models.Model):
     seats = models.ManyToManyField(Seat)
 
     quantity = models.IntegerField()
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    total_price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0
+    )
 
     booking_date = models.DateTimeField(auto_now_add=True)
 

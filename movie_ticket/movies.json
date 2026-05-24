@@ -1,0 +1,38 @@
+[
+{
+  "model": "booking.movie",
+  "pk": 1,
+  "fields": {
+    "title": "Avenger",
+    "description": "Fight and comedy",
+    "release_date": "2026-05-20",
+    "ticket_price": "440.00",
+    "available_seats": 25,
+    "movie_image": "https://m.media-amazon.com/images/I/71niXI3lxlL.jpg"
+  }
+},
+{
+  "model": "booking.movie",
+  "pk": 2,
+  "fields": {
+    "title": "Spider-Man",
+    "description": "Fight and Comic",
+    "release_date": "2026-05-13",
+    "ticket_price": "400.00",
+    "available_seats": 28,
+    "movie_image": "https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg"
+  }
+},
+{
+  "model": "booking.movie",
+  "pk": 3,
+  "fields": {
+    "title": "Bat-Man",
+    "description": "Fight and Cartoon",
+    "release_date": "2026-03-10",
+    "ticket_price": "300.00",
+    "available_seats": 30,
+    "movie_image": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
+  }
+}
+]

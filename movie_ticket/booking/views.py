@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 from django.db import transaction
 
+from .forms import UserUpdateForm
 from .models import Movie, Booking, Seat
 
 
@@ -54,6 +57,37 @@ def register(request):
 def my_bookings(request):
     bookings = Booking.objects.filter(user=request.user)
     return render(request, 'my_bookings.html', {'bookings': bookings})
+
+
+# -------------------------
+# PROFILE
+# -------------------------
+@login_required
+def profile(request):
+    profile_form = UserUpdateForm(instance=request.user)
+    password_form = PasswordChangeForm(request.user)
+    profile_success = None
+    password_success = None
+
+    if request.method == 'POST':
+        if 'profile_form' in request.POST:
+            profile_form = UserUpdateForm(request.POST, instance=request.user)
+            if profile_form.is_valid():
+                profile_form.save()
+                profile_success = 'Username/email updated successfully.'
+        elif 'password_form' in request.POST:
+            password_form = PasswordChangeForm(request.user, request.POST)
+            if password_form.is_valid():
+                user = password_form.save()
+                update_session_auth_hash(request, user)
+                password_success = 'Password changed successfully.'
+
+    return render(request, 'profile.html', {
+        'profile_form': profile_form,
+        'password_form': password_form,
+        'profile_success': profile_success,
+        'password_success': password_success,
+    })
 
 
 # -------------------------
