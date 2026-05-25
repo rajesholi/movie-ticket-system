@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Profile</h2>
+
+{% if profile_success %}
+    <p style="color:green;">{{ profile_success }}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ profile_form.as_p }}
+    <button type="submit" name="profile_form">Update username/email</button>
+</form>
+
+<hr>
+
+<h2>Change Password</h2>
+
+{% if password_success %}
+    <p style="color:green;">{{ password_success }}</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ password_form.as_p }}
+    <button type="submit" name="password_form">Change password</button>
+</form>
+
+{% endblock %}
