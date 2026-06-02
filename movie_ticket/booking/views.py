@@ -8,7 +8,7 @@ from .forms import RegisterForm, UserUpdateForm
 from .models import Movie, Booking, Seat
 
 
-try:
+try:     
     import pyautogui
     import pyttsx3
 except ImportError:
@@ -63,7 +63,7 @@ def register(request):
 # MY BOOKINGS
 # -------------------------
 @login_required
-def my_bookings(request):
+def my_bookings(request): 
     bookings = Booking.objects.filter(user=request.user)
     return render(request, 'my_bookings.html', {'bookings': bookings})
 
